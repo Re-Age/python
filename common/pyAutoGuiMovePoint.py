@@ -2,7 +2,6 @@
 # インポート
 #----------------------------------------------------------------------
 import pyautogui as pag
-import pyscreeze
 import random
 
 def getCenterOnScreen(strFileName, booGrayScale, floConfidence, intMoveX, intMoveY):
@@ -44,3 +43,22 @@ def getCenterOnScreen(strFileName, booGrayScale, floConfidence, intMoveX, intMov
         print('ファイルが読み込めませんでした。')
 
     return tupReturn
+
+def clickWithReturn(clickPosition):
+    """
+    指定された位置をクリックし、クリック直前の位置にポイントを戻す。
+
+    Args:
+        clickPosition  : クリックする画面位置(tuple[x座標, y座標])
+
+    Returns:
+        なし
+
+    Raises:
+        なし
+    """
+    # 現在位置取得
+    currentPosition = pag.position()
+
+    pag.click(clickPosition)
+    pag.moveTo(currentPosition[0], currentPosition[1])
